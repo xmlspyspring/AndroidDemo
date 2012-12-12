@@ -5,6 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="7" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -20,6 +24,7 @@
         <activity android:name=".SendEmail"></activity>
         <activity android:name=".SMSActivity"></activity>
         <activity android:name=".CallActivity"></activity>
+        <activity android:name=".WebActivity"></activity>
         
     </application>
 

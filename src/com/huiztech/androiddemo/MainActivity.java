@@ -40,7 +40,10 @@ public class MainActivity extends ListActivity {
             intent = new Intent(MainActivity.this, SMSActivity.class);
             startActivity(intent);
             break;
-
+        case 3:
+            intent = new Intent(MainActivity.this, WebActivity.class);
+            startActivity(intent);
+            break;
         default:
             break;
         }
