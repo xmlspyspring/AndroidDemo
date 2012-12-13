@@ -44,6 +44,10 @@ public class MainActivity extends ListActivity {
             intent = new Intent(MainActivity.this, WebActivity.class);
             startActivity(intent);
             break;
+        case 4:
+            intent = new Intent(MainActivity.this, MusicActivity.class);
+            startActivity(intent);
+            break;
         default:
             break;
         }

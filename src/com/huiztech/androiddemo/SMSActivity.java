@@ -43,7 +43,6 @@ public class SMSActivity extends ListActivity {
         setListAdapter(myAdapter);
         mListView.setOnItemClickListener(new OnItemClickListener() {
 
-            @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 //调用系统方法发短信
                 Intent smsIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:"
@@ -105,22 +104,18 @@ public class SMSActivity extends ListActivity {
             mContext = context;
         }
 
-        @Override
         public int getCount() {
             return mContactsName.size();
         }
 
-        @Override
         public Object getItem(int position) {
             return position;
         }
 
-        @Override
         public long getItemId(int position) {
             return position;
         }
 
-        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             TextView name = null;
             TextView number = null;

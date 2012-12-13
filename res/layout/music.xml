@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/musicImageView"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/musicImageView" />
+
+    <TextView
+        android:id="@+id/playtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/seekbar"
+        android:text="playtime" />
+
+    <TextView
+        android:id="@+id/durationTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/seekbar"
+        android:text="duratiomTime" />
+
+    <Button
+        android:id="@+id/speedBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/playtime"
+        android:text="speed" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/durationTime"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/playtime"
+        android:text="Next" />
+
+    
+
+    <Button
+        android:id="@+id/lastBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/stopBtn"
+        android:layout_toLeftOf="@+id/nextBtn"
+        android:text="Last" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/startBtn"
+        android:layout_marginRight="25dp"
+        android:layout_toLeftOf="@+id/lastBtn"
+        android:text="back" />
+    
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/backBtn"
+        android:layout_below="@id/speedBtn"
+        android:text="Start" />
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/speedBtn"
+        android:layout_toRightOf="@+id/startBtn"
+        android:text="Stop" />
+
+</RelativeLayout>

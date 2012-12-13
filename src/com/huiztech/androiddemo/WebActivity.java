@@ -24,7 +24,6 @@ public class WebActivity extends Activity {
         //        webView.getSettings().setJavaScriptEnabled(true);如果网页有JavaScript，则webview必须支持JavaScript
         btn_OK.setOnClickListener(new OnClickListener() {
 
-            @Override
             public void onClick(View v) {
                 String url = editText.getText().toString();
                 webView.loadUrl(url);
