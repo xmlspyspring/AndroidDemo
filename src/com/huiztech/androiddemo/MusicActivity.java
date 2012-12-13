@@ -68,14 +68,14 @@ public class MusicActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                mp.start();
+                mp.start();//开始当前播放
             }
         });
         stopBtn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                mp.stop();
+                mp.pause();//取消当前播放
                 handler.removeCallbacks(updateThread);
             }
         });

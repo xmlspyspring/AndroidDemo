@@ -47,6 +47,17 @@ public class MainActivity extends ListActivity {
         case 4:
             intent = new Intent(MainActivity.this, MusicActivity.class);
             startActivity(intent);
+        case 5:
+            intent = new Intent(MainActivity.this, VideoActivity.class);
+            startActivity(intent);
+            break;
+        case 6:
+            intent = new Intent(MainActivity.this, CameraActivity.class);
+            startActivity(intent);
+            break;
+        case 7:
+            intent = new Intent(MainActivity.this, VoiceRecognition.class);
+            startActivity(intent);
             break;
         default:
             break;
