@@ -1,102 +1,90 @@
 package com.huiztech.androiddemo;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
-import android.media.MediaPlayer;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
+import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MusicActivity extends Activity {
-    private Button startBtn = null;
-    private Button stopBtn = null;
-    private Button lastBtn = null;
-    private Button nextBtn = null;
-    private Button speedBtn = null;
-    private Button backBtn = null;
-    private TextView playtime = null;
-    private TextView durationTime = null;
-    private SeekBar seekbar = null;
-    private Handler handler = null;
-    private Handler speedHandler = null;
-    private Runnable updateThread = null;
-    private int currentPosition;
-    MediaPlayer mp;
+    Context mContext = null;
+    private static final String[] MUSIC_PROJECTION = new String[] { MediaStore.Audio.Media.TITLE,
+            MediaStore.Audio.Media.ARTIST };
+    private static final int MUSIC_NAME_INDEX = 0;
+    private static final int MUSIC_SINGER_INDEX = 1;
+    private ArrayList<String> musicNameArray = new ArrayList<String>();
+    private ArrayList<String> musicSingerArray = new ArrayList<String>();
+    MyListAdapter myAdapter = null;
+    ListView mListView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.music);
-        mp = new MediaPlayer();
-        try {
-            mp.setDataSource("mnt/sdcard2/Music/Hey Jude.mp3");
-            mp.prepare();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        mContext = this;
+        setContentView(R.layout.music_list);
+        mListView = (ListView) findViewById(R.id.musicListView);
+        getMusic();
+        mListView.setAdapter(myAdapter);
+    }
+
+    private void getMusic() {
+        ContentResolver resolver = mContext.getContentResolver();
+        Cursor musicCursor = resolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                MUSIC_PROJECTION, null, null, null);
+        if (musicCursor != null) {
+            while (musicCursor.moveToNext()) {
+                String musicName = musicCursor.getString(MUSIC_NAME_INDEX);
+                if (TextUtils.isEmpty(musicName))
+                    continue;
+                String musicSinger = musicCursor.getString(MUSIC_SINGER_INDEX);
+                musicNameArray.add(musicName);
+                musicSingerArray.add(musicSinger);
+            }
+            musicCursor.close();
         }
-        playtime = (TextView) findViewById(R.id.playtime);
-        durationTime = (TextView) findViewById(R.id.durationTime);
-        startBtn = (Button) findViewById(R.id.startBtn);
-        stopBtn = (Button) findViewById(R.id.stopBtn);
-        lastBtn = (Button) findViewById(R.id.lastBtn);
-        nextBtn = (Button) findViewById(R.id.nextBtn);
-        speedBtn = (Button) findViewById(R.id.speedBtn);
-        backBtn = (Button) findViewById(R.id.backBtn);
-        seekbar = (SeekBar) findViewById(R.id.seekbar);
-        seekbar.setMax(mp.getDuration());
-        handler = new Handler();
-        updateThread = new Runnable() {
+    }
 
-            @Override
-            public void run() {
-                seekbar.setProgress(mp.getCurrentPosition());
-                handler.postDelayed(updateThread, 100);
-            }
+    class MyListAdapter extends BaseAdapter {
+        public MyListAdapter(Context context) {
+            mContext = context;
+        }
 
-        };
-        startBtn.setOnClickListener(new OnClickListener() {
+        @Override
+        public int getCount() {
+            return musicNameArray.size();
+        }
 
-            @Override
-            public void onClick(View v) {
-                mp.start();//开始当前播放
-            }
-        });
-        stopBtn.setOnClickListener(new OnClickListener() {
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
 
-            @Override
-            public void onClick(View v) {
-                mp.pause();//取消当前播放
-                handler.removeCallbacks(updateThread);
-            }
-        });
-        seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                mp.start();//停止拖动进度条时，音乐开始播放
-            }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView musicName = null;
+            TextView musicSinger = null;
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.music_list_item, null);
+            musicName = (TextView) convertView.findViewById(R.id.musicTextView);
+            musicSinger = (TextView) convertView.findViewById(R.id.singerTextView);
+            musicName.setText(musicNameArray.get(position));
+            musicSinger.setText(musicSingerArray.get(position));
+            return convertView;
+        }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                mp.pause();//开始拖动进度条时，音乐暂停播放
-            }
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    mp.seekTo(progress);//当进度条的值改变时，音乐播放器从新的位置开始播放
-                }
-            }
-        });
     }
 }

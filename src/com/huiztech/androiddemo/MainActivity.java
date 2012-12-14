@@ -59,6 +59,10 @@ public class MainActivity extends ListActivity {
             intent = new Intent(MainActivity.this, VoiceRecognition.class);
             startActivity(intent);
             break;
+        case 16:
+            intent = new Intent(MainActivity.this, RecordActivity.class);
+            startActivity(intent);
+            break;
         default:
             break;
         }
