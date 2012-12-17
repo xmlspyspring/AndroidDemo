@@ -22,17 +22,20 @@ public class VideoActivity extends Activity {
         Button PlayButton = (Button) this.findViewById(R.id.PlayButton);
 
         // load
-        LoadButton.setOnClickListener(new OnClickListener() {
+        PauseButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                videoView.setVideoPath("mnt/sdcard2/Videos/girl.mp4");
+                videoView.setVideoPath("mnt/sdcard/game.mp4");// video的存放路径
                 /*
                  * videoView.setVideoPath(
                  * "android.resource://com.huiztech.androiddemo/" + R.raw.game);
                  */
-                videoView.setMediaController(new MediaController(VideoActivity.this));
-                videoView.requestFocus();
+                videoView.setMediaController(new MediaController(VideoActivity.this));// 视频控制控件
+                                                                                      // 如
+                                                                                      // 暂停
+                                                                                      // 快进
+                videoView.requestFocus();// VideoView获取焦点
             }
         });
         // play
@@ -40,7 +43,7 @@ public class VideoActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                videoView.start();
+                videoView.start();// 开始播放视频
             }
         });
         // pause
@@ -48,7 +51,7 @@ public class VideoActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                videoView.pause();
+                videoView.pause();// 暂停播放视频
             }
         });
     }

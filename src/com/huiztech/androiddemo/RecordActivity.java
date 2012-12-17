@@ -19,8 +19,7 @@ public class RecordActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);// 让界面横屏
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉界面标题
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // 重新设置界面大小
         setContentView(R.layout.record);
         init();
@@ -43,7 +42,7 @@ public class RecordActivity extends Activity {
             }
             if (v == btnStop) {
                 mediaRecorder.stop();// 停止刻录
-                mediaRecorder.release();// 刻录完成一定要释放资源
+                mediaRecorder.release();// 刻录完成释放资源
             }
 
         }
@@ -56,11 +55,11 @@ public class RecordActivity extends Activity {
             // 设置MediaRecorder录制的音频格式
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             // 设置MediaRecorder录制音频的编码为amr
-            mediaRecorder.setOutputFile("/mnt/sdcard2/peipei.amr");
+            mediaRecorder.setOutputFile("/mnt/sdcard/peipei.amr");
             // 设置录制好的音频文件保存路径
             try {
                 mediaRecorder.prepare();// 准备录制
-                mediaRecorder.start();
+                mediaRecorder.start();// 开始录制
             } catch (Exception e) {
                 e.printStackTrace();
             }

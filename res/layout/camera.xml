@@ -3,19 +3,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
-    
-    <Button
-        android:id="@+id/btn_photo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="点击启动相机" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#999999" />
-    
+        android:id="@+id/imageID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="50dip"
+        android:maxWidth="50dip" />
+
+    <Button
+        android:id="@+id/btn_01"
+        android:layout_width="150dip"
+        android:layout_height="50dip"
+        android:text="相册" />
+
+    <Button
+        android:id="@+id/btn_02"
+        android:layout_width="150dip"
+        android:layout_height="50dip"
+        android:text="拍照" />
 
 </LinearLayout>

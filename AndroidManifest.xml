@@ -42,9 +42,11 @@
         <activity android:name=".CallActivity"></activity>
         <activity android:name=".WebActivity"></activity>
         <activity android:name=".MusicActivity"></activity>
+        <activity android:name=".G_SensorActivity"></activity>
         <activity android:name=".VideoActivity"></activity>
         <activity android:name=".VoiceRecognition"></activity>
         <activity android:name=".CameraActivity"></activity>
+        <activity android:name=".MusicPlayerActivity"></activity>
         <activity android:name=".startVoiceRecognitionActivity"></activity>
         
     </application>

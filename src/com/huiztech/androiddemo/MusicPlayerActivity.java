@@ -1,6 +1,7 @@
 package com.huiztech.androiddemo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
@@ -13,7 +14,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class MusicActivity1 extends Activity {
+public class MusicPlayerActivity extends Activity {
     private Button startBtn = null;
     private Button stopBtn = null;
     private Button lastBtn = null;
@@ -27,15 +28,20 @@ public class MusicActivity1 extends Activity {
     private Handler speedHandler = null;
     private Runnable updateThread = null;
     private int currentPosition;
+    private ArrayList<String> musicNameArray = new ArrayList<String>();
+    private ArrayList<String> musicSingerArray = new ArrayList<String>();
     MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music);
+        musicNameArray = this.getIntent().getStringArrayListExtra("musciNameArray");
+        musicSingerArray = this.getIntent().getStringArrayListExtra("musicSingerArray");
+        currentPosition = this.getIntent().getIntExtra("position", 0);
         mp = new MediaPlayer();
         try {
-            mp.setDataSource("mnt/sdcard2/Music/Hey Jude.mp3");
+            mp.setDataSource(musicNameArray.get(currentPosition));
             mp.prepare();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();

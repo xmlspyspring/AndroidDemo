@@ -9,13 +9,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="sendMail"
-        />
+        android:onClick="sendMail"/>
     <Button
-        android:id="@+id/btnFsend"
+        android:id="@+id/btnFSend"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="FendEmail"
-        
+        android:text="receiveMail"
+        android:onClick="receiveMail"
          />
 
 </LinearLayout>

@@ -47,6 +47,7 @@ public class MainActivity extends ListActivity {
         case 4:
             intent = new Intent(MainActivity.this, MusicActivity.class);
             startActivity(intent);
+            break;
         case 5:
             intent = new Intent(MainActivity.this, VideoActivity.class);
             startActivity(intent);
@@ -57,6 +58,10 @@ public class MainActivity extends ListActivity {
             break;
         case 7:
             intent = new Intent(MainActivity.this, VoiceRecognition.class);
+            startActivity(intent);
+            break;
+        case 8:
+            intent = new Intent(MainActivity.this, G_SensorActivity.class);
             startActivity(intent);
             break;
         case 16:
