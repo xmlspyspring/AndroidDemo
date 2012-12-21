@@ -22,11 +22,12 @@ public class VideoActivity extends Activity {
         Button PlayButton = (Button) this.findViewById(R.id.PlayButton);
 
         // load
-        PauseButton.setOnClickListener(new OnClickListener() {
+        LoadButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 videoView.setVideoPath("mnt/sdcard/game.mp4");// video的存放路径
+                videoView.setVideoPath("mnt/sdcard2/Videos/girl.mp4");
                 /*
                  * videoView.setVideoPath(
                  * "android.resource://com.huiztech.androiddemo/" + R.raw.game);

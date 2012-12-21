@@ -22,9 +22,9 @@ public class SendEmail extends Activity {
             @Override
             public void onClick(View v) {
                 Intent data = new Intent(android.content.Intent.ACTION_SENDTO);
-                data.setData(Uri.parse("mailto:519213104@.com"));
-                data.putExtra(Intent.EXTRA_SUBJECT, "这是标题");
-                data.putExtra(Intent.EXTRA_TEXT, "这是内容");
+                data.setData(Uri.parse("mailto:303230815@qq.com"));
+                data.putExtra(Intent.EXTRA_SUBJECT, "标题");
+                data.putExtra(Intent.EXTRA_TEXT, "内容");
                 startActivity(data);
             }
         });
@@ -37,13 +37,13 @@ public class SendEmail extends Activity {
             public void onClick(View v) {
                 Intent data = new Intent(Intent.ACTION_SENDTO);// 建立Intent对象，设置对象动作
                 data.setData(Uri.parse("mailto:qq10000@qq.com"));// 发件人地址
-                data.putExtra(Intent.EXTRA_EMAIL, new String[] { "ls8707@163.com", "ls8708@163.com" });// 设置对方邮件地址
-                data.putExtra(Intent.EXTRA_CC, new String[] { "ls8709@163.com" });// 抄送地址
-                                                                                  // 转发的地址
-                data.putExtra(Intent.EXTRA_BCC, new String[] { "ls810@163.com" });// 密送地址
-                                                                                  // 把邮件内容加密发出去
-                data.putExtra(Intent.EXTRA_SUBJECT, "这是标题");// 邮件标题
-                data.putExtra(Intent.EXTRA_TEXT, "这是内容");// 邮件内容
+                data.putExtra(Intent.EXTRA_EMAIL, new String[] { "ls8707@163.com", "" });// 设置对方邮件地址
+                data.putExtra(Intent.EXTRA_CC, new String[] { "" });// 抄送地址
+                                                                    // 转发的地址
+                data.putExtra(Intent.EXTRA_BCC, new String[] { "" });// 密送地址
+                                                                     // 把邮件内容加密发出去
+                data.putExtra(Intent.EXTRA_SUBJECT, "标题标题");// 邮件标题
+                data.putExtra(Intent.EXTRA_TEXT, "内容");// 邮件内容
                 startActivity(data);
             }
         });

@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.huiztech.androiddemo.player.MainActivity1;
+
 public class MainActivity extends ListActivity {
 
     String[] str = { "发邮件", "打电话", "发短信", "浏览器", "音乐播放器", "视频播放器", "照相", "语音识别", "传感器", "重力感应器",
-            "Google Map服务", "导航技术", "动画技术", "蓝牙技术", "手势操作", "界面特效", "录音", "GPS定位" };
+            "Google Map服务", "导航技术", "动画技术", "蓝牙技术", "手势操作", "界面特效", "录音", "GPS定位", "通知" };
     Intent intent;
 
     @Override
@@ -45,7 +47,7 @@ public class MainActivity extends ListActivity {
             startActivity(intent);
             break;
         case 4:
-            intent = new Intent(MainActivity.this, MusicActivity.class);
+            intent = new Intent(MainActivity.this, MainActivity1.class);
             startActivity(intent);
             break;
         case 5:
@@ -64,10 +66,23 @@ public class MainActivity extends ListActivity {
             intent = new Intent(MainActivity.this, G_SensorActivity.class);
             startActivity(intent);
             break;
+        case 14:
+            intent = new Intent(MainActivity.this, Gesture.class);
+            startActivity(intent);
+            break;
         case 16:
             intent = new Intent(MainActivity.this, RecordActivity.class);
             startActivity(intent);
             break;
+        case 18:
+            intent = new Intent(MainActivity.this, NotificationActivity.class);
+            startActivity(intent);
+            break;
+
+        //        case 17:
+        //            intent = new Intent(MainActivity.this, GPSActivity.class);
+        //            startActivity(intent);
+        //            break;
         default:
             break;
         }

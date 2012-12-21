@@ -36,6 +36,8 @@ public class G_SensorActivity extends Activity {
         setContentView(mAnimView);
     }
 
+    //SurfaceView 是 View 的继承类，这个视图里内嵌了一个专门用于绘制的Surface 
+    //可以绘制这个Surface的格式和尺寸。SurfaceView控制这个Surface的绘制位置
     public class MyView extends SurfaceView implements Runnable, SensorEventListener, Callback {
         //每50帧刷新一次屏幕
         public static final int TIME_IN_FRAME = 50;
@@ -85,9 +87,9 @@ public class G_SensorActivity extends Activity {
             mPaint = new Paint();
             mPaint.setColor(Color.WHITE);
             //加载小球资源
-            mbitmapBall = BitmapFactory.decodeResource(this.getResources(), R.drawable.ball);
+            mbitmapBall = BitmapFactory.decodeResource(this.getResources(), R.drawable.music);
             //加载游戏背景
-            mbitmapBg = BitmapFactory.decodeResource(this.getResources(), R.drawable.senlin);
+            mbitmapBg = BitmapFactory.decodeResource(this.getResources(), R.drawable.bg);
 
             //得到SensorManager对象
             mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
